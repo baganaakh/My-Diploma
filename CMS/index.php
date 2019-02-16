@@ -69,7 +69,7 @@
             <div class="col-md-8">
 
                 <h1 class="page-header">
-                    Page Head
+                    Page Head eeeeer ddd
                     <small>Secondary Text</small>
                 </h1>
 
