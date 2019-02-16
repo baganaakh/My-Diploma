@@ -1,7 +1,14 @@
 <?php 
-$connection = mysqli_connect('localhost', 'admin', 'password', 'cms');
+$db['db_host'] = "localhost";
+$db['db_user'] = "admin";
+$db['db_pass'] = "password";
+$db['db_name'] = "cms";
+foreach ($db as $key => $value) {
+    define(strtoupper($key), $value);
+}
+$connection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 if ($connection) {
-    echo "connected";
+    echo " WEE connected yeah ";
 }
 
 ?>
