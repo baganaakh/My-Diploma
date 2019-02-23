@@ -58,7 +58,8 @@
                                             die('QUERY FAILED' . mysqli_error($connection));
                                         }
                                     }
-                                }
+                                }?>
+                                <?php
                                 $query = "SELECT * FROM categories ";
                                 $select_categories = mysqli_query($connection, $query);
                                 while ($row = mysqli_fetch_assoc($select_categories)) {
