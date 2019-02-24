@@ -1,5 +1,5 @@
 <?php ob_start(); ?>
-<?php include "../admin_func.php"?>
+<?php include "./admin_func.php"?>
 <?php include "../includes/db.php" ?>
 
 <!DOCTYPE html>
