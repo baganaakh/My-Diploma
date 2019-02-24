@@ -14,38 +14,27 @@
                         Blank Page
                         <small>Subheading</small>
                     </h1>
-                    <table class="table table-bordered table-hover">
-                      <thead>
-                        <tr>
-                          <?php 
-                          $query
-                          
-                          ?>
-                          <th>ID</th>
-                          <th>Author</th>
-                          <th>Title</th>
-                          <th>Category</th>
-                          <th>Status</th>
-                          <th>Image</th>
-                          <th>Tags</th>
-                          <th>Comments</th>
-                          <th>Date</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>10</td>
-                          <td>Altanbagana</td>
-                          <td>CMS POSTS</td>
-                          <td>WEB</td>
-                          <td>DRAFT</td>
-                          <td>image</td>
-                          <td>php,mysql</td>
-                          <td>comments</td>
-                          <td>2019.02.24</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                    <?php
+                    if (isset($_GET['source'])) {
+                      $source = $_GET['source'];
+                    } else {
+                      $source = '';
+                    }
+                    switch ($source) {
+                      case 'add_post';
+                        include "includes/add_post.php";
+                        break;
+                      case '100';
+                        echo "NICE 100";
+                        break;
+                      case '77';
+                        echo "NICE 77";
+                        break;
+                      default:
+                        include "includes/view_all_posts.php";
+                        break;
+                    }
+                    ?>
                 </div>
             </div>
             <!-- /.row -->
