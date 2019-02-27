@@ -12,7 +12,7 @@
                 <div class="col-lg-12">
                     <h1 class="page-header">
                         Blank Page
-                        <small>Subheading</small>
+                        <small>Subhding</small>
                     </h1>
                     <?php
                     if (isset($_GET['source'])) {
@@ -21,13 +21,13 @@
                       $source = '';
                     }
                     switch ($source) {
-                      case 'add_post';
+                      case 'add_post':
                         include "includes/add_post.php";
                         break;
-                      case '100';
-                        echo "NICE 100";
+                      case 'edit_post':
+                        include "includes/edit_post.php";
                         break;
-                      case '77';
+                      case '77':
                         echo "NICE 77";
                         break;
                       default:

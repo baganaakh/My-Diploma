@@ -1,12 +1,18 @@
 <?php 
-
+function comfirm($result){
+    global $connection;
+    if(!$result){
+        die("QUERY FILED ".mysqli_error($connection));
+    }
+    
+}
 function insert_categories()
 {
     global $connection;
 
     if (isset($_POST['submit'])) {
         $cat_title = $_POST['cat_title'];
-        if ($cat_title == "" || empty($cat_title)) {
+        if ($cat_title == "" || empty($cat_title)) { 
             echo "this field should not be empty";
         } else {
             $query = "INSERT INTO categories(cat_title) ";

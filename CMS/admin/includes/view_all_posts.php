@@ -10,6 +10,8 @@
                                 <th>Tags</th>
                                 <th>Comments</th>
                                 <th>Date</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -36,21 +38,17 @@
                                   echo "<td>$post_tags</td>";
                                   echo "<td>$post_comment_count</td>";
                                   echo "<td>$post_date</td>";
+                                  echo "<td><a href='posts.php?source=edit_post&p_id={$post_id}'>Edit</a></td>";
+                                  echo "<td><a href='posts.php?delete={$post_id}'>Delete</a></td>";
                                   echo "</tr>";
                                 }
 
                                 ?>
-                            <tr>
-                              
-                                <td>10</td>
-                                <td>Altanbagana</td>
-                                <td>CMS POSTS</td>
-                                <td>WEB</td>
-                                <td>DRAFT</td>
-                                <td>image</td>
-                                <td>php,mysql</td>
-                                <td>comments</td>
-                                <td>2019.02.24</td>
-                            </tr>
                         </tbody>
                     </table>
+                    <?php
+                    if(isset($_GET['delete'])){
+                    $query="DELETE FROM posts WHERE post_id={$post_id}";
+                    $delete_query=mysqli_query($connection, $query);
+                    }
+                    ?>
