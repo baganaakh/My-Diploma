@@ -24,7 +24,7 @@
                 if ($count == 0) {
                     echo "<h1> no result</h1>";
                 } else {
-                    $query = "SELECT * FROM posts ";
+                    $query = "SELECT * FROM posts WHERE post_tags LIKE '%$search%' ";
                     $select_all_posts_query = mysqli_query($connection, $query);
                     while ($row = mysqli_fetch_assoc($select_all_posts_query)) {
                         $post_title = $row['post_title'];

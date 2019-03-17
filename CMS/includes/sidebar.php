@@ -8,7 +8,7 @@
                 <div class="well">
                
                 
-                    <h4>Блог хайлх</h4>
+                    <h4>Таг хайлт</h4>
                     <form action="search.php" method="post">
                     <div class="input-group">
                         <input name="search" type="text" class="form-control">
@@ -29,7 +29,7 @@
                 $query = "SELECT * FROM categories LIMIT 3";
                 $select_all_categories_query = mysqli_query($connection, $query);
                 ?>
-                    <h4>Blog Categories</h4>
+                    <h4>Site Categories</h4>
                     <div class="row">
                         <div class="col-lg-12">
                             <ul class="list-unstyled">
