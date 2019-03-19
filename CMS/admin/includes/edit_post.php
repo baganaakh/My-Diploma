@@ -29,6 +29,13 @@ if(isset($_POST['Update_Post']) && isset($_GET['p_id'])){
     $post_content=$_POST['post_content'];
     $post_tags=$_POST['post_tags'];
     move_uploaded_file($post_image_temp,"../images/$post_image");
+    if(empty($post_image)){
+        $query="SELECT * FROM posts WHERE post_id = $the_post_id ";
+        $select_image=mysqli_query($connection, $query);
+        while($row=mysqli_fetch_array($select_image)){
+            $post_image=$row['post_image'];
+        }
+    }
     $query=" UPDATE posts SET ";
     $query .="post_title = '{$post_title}', ";
     $query .="post_category_id = '{$post_category_id}', ";
@@ -40,7 +47,6 @@ if(isset($_POST['Update_Post']) && isset($_GET['p_id'])){
     $query .="post_image = '{$post_image}' ";
     $query .="WHERE post_id = '{$the_post_id}' ";
     $update_post=mysqli_query($connection,$query);
-    comfirm($update_post);
     if(! $update_post){
         die("QUERY FILED DD" . mysqli_error($connection));
     }
@@ -54,7 +60,6 @@ if(isset($_POST['Update_Post']) && isset($_GET['p_id'])){
     <div class="form-group">
         <select name="post_category" id="">
             <?php 
- 
             $query = "SELECT * FROM categories";
             $select_categories = mysqli_query($connection, $query);
             comfirm($select_categories);
