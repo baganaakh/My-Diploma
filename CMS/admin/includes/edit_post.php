@@ -1,8 +1,7 @@
 <?php 
 if (isset($_GET['p_id'])) {
  $the_post_id=$_GET['p_id'];
-}
-$query = "SELECT * FROM posts WHERE post_id = $the_post_id ";
+ $query = "SELECT * FROM posts WHERE post_id = $the_post_id";
 $select_posts_by_id = mysqli_query($connection, $query);
 while ($row = mysqli_fetch_assoc($select_posts_by_id)) {
     $post_id = $row['post_id'];
@@ -17,7 +16,10 @@ while ($row = mysqli_fetch_assoc($select_posts_by_id)) {
     $post_content = $row['post_content'];
     $post_status = $row['post_status'];
 }
-if(isset($_POST['Update_Post'])){
+}
+
+if(isset($_POST['Update_Post']) && isset($_GET['p_id'])){
+    $the_post_id=$_GET['p_id'];
     $post_author=$_POST['post_author'];
     $post_title=$_POST['post_title'];
     $post_category_id=$_POST['post_category'];
@@ -27,7 +29,7 @@ if(isset($_POST['Update_Post'])){
     $post_content=$_POST['post_content'];
     $post_tags=$_POST['post_tags'];
     move_uploaded_file($post_image_temp,"../images/$post_image");
-    $query="UPDATE posts SET ";
+    $query=" UPDATE posts SET ";
     $query .="post_title = '{$post_title}', ";
     $query .="post_category_id = '{$post_category_id}', ";
     $query .="post_date = now(), ";
@@ -35,8 +37,8 @@ if(isset($_POST['Update_Post'])){
     $query .="post_status = '{$post_status}', ";
     $query .="post_tags = '{$post_tags}', ";
     $query .="post_content = '{$post_content}', ";
-    $query .="post_image = '{$post_image}', ";
-    $query .="WHERE post_id = '{$post_id}' ";
+    $query .="post_image = '{$post_image}' ";
+    $query .="WHERE post_id = '{$the_post_id}' ";
     $update_post=mysqli_query($connection,$query);
     comfirm($update_post);
     if(! $update_post){
@@ -78,7 +80,7 @@ if(isset($_POST['Update_Post'])){
         <label for="post_image">Post Image</label>
         <img width="100" src="../images/<?php echo $post_image; ?>" alt="">
         <input type="file" name="image">
-    </div>sg
+    </div>
     <div class="form-group">
         <label for="post_tags">Post Tags</label>
         <input type="text" class="form-control" name="post_tags" value="<?php echo $post_tags; ?>">
