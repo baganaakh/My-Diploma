@@ -5,7 +5,7 @@ if (isset($_POST['create_user'])) {
     $user_role = $_POST['user_role'];
     $username = $_POST['username'];
     $user_password = $_POST['user_password'];
-    $user_email = date('user_email');
+    $user_email = $_POST('user_email');
 
 
     // $user_image = $_FILES['image']['name'];
