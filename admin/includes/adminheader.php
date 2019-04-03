@@ -1,6 +1,16 @@
-<?php ob_start(); ?>
-<?php include "./admin_func.php"?>
-<?php include "../includes/db.php" ?>
+<?php include "./admin_func.php";
+include "../includes/db.php";
+?>
+<?php ob_start();
+session_start();
+?>
+<?php
+if(!isset($_SESSION['user_role'])){
+   
+        header("Location: ../index.php");
+    
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +22,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
+ 
     <title>SB Admin - Bootstrap Admin Template</title>
 
     <!-- Bootstrap Core CSS -->
