@@ -28,20 +28,7 @@
             echo "<td>$username</td>";
             echo "<td>$user_firstname</td>";
             echo "<td>$user_lastname</td>";
-            // $query = "SELECT * FROM categories WHERE cat_id = {$post_category_id} ";
-            // $select_categories_id = mysqli_query($connection, $query);
-            // while ($row = mysqli_fetch_assoc($select_categories_id)) {
-            //     $cat_id = $row['cat_id'];
-            //     $cat_title = $row['cat_title'];
-            //     echo "<td>{$cat_title}</td>";
-            //}
-            // $query = "SELECT * FROM posts WHERE post_id = $comment_post_id ";
-            // $select_post_id_query = mysqli_query($connection, $query);
-            // while ($row = mysqli_fetch_assoc($select_post_id_query)) {
-            //     $post_id = $row['post_id'];
-            //     $post_title = $row['post_title'];
-            //     echo "<td><a href='../post.php?p_id=$post_id'>$post_title</a></td>";
-            // }
+            
             echo "<td>$user_email</td>";
             echo "<td>$user_role</td>";
             echo "<td><a href='user.php?change_to_admin={$user_id}'>Admin</a></td>";
