@@ -32,9 +32,18 @@
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <?php
-                                    $query="SELECT * FROM posts";
-                                    $select_all_post=mysqli_query($connection,$query);
-                                    $post_counts=mysqli_num_rows($select_all_post);
+                                    $query = "SELECT * FROM posts";
+                                    $select_all_post = mysqli_query($connection, $query);
+                                    $post_counts = mysqli_num_rows($select_all_post);
+                                    $query = "SELECT * FROM comments";
+                                    $select_all_comments = mysqli_query($connection, $query);
+                                    $comment_counts = mysqli_num_rows($select_all_comments);
+                                    $query = "SELECT * FROM users";
+                                    $select_all_users = mysqli_query($connection, $query);
+                                    $users_counts = mysqli_num_rows($select_all_users);
+                                    $query = "SELECT * FROM categories";
+                                    $select_all_categories = mysqli_query($connection, $query);
+                                    $category_counts = mysqli_num_rows($select_all_categories);
                                     ?>
                                     <div class='huge'><?php echo $post_counts; ?></div>
                                     <div>Posts</div>
@@ -58,7 +67,7 @@
                                     <i class="fa fa-comments fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class='huge'>23</div>
+                                    <div class='huge'><?php echo $comment_counts; ?></div>
                                     <div>Comments</div>
                                 </div>
                             </div>
@@ -80,12 +89,12 @@
                                     <i class="fa fa-user fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class='huge'>23</div>
+                                    <div class='huge'><?php echo $users_counts; ?></div>
                                     <div> Users</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="users.php">
+                        <a href="user.php">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -102,7 +111,7 @@
                                     <i class="fa fa-list fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class='huge'>13</div>
+                                    <div class='huge'><?php echo $category_counts; ?></div>
                                     <div>Categories</div>
                                 </div>
                             </div>
@@ -117,7 +126,51 @@
                     </div>
                 </div>
             </div>
+            <?php
+            $query = "SELECT * FROM posts WHERE post_status = 'draft'";
+            $select_all_draft_post = mysqli_query($connection, $query);
+            $post_draft_count = mysqli_num_rows($select_all_draft_post);
 
+            $query = "SELECT * FROM comments WHERE comment_status = 'unapproved'";
+            $unapproved_comment_query = mysqli_query($connection, $query);
+            $unapproved_comment_count = mysqli_num_rows($unapproved_comment_query);
+
+            $query = "SELECT * FROM users WHERE user_role = 'subscriber'";
+            $select_all_subscribers = mysqli_query($connection, $query);
+            $subscriber_count = mysqli_num_rows($select_all_subscribers);
+            ?>
+            <script type="text/javascript">
+                google.charts.load('current', {
+                    'packages': ['bar']
+                });
+                google.charts.setOnLoadCallback(drawChart);
+
+                function drawChart() {
+                    var data = google.visualization.arrayToDataTable([
+                        ['Data', 'Count'],
+                        <?php
+                        $element_text = ['Active Posts', 'Draft Posts', 'Comments','Pending comments', 'Users','Subscribers', 'Categories'];
+                        $element_count = [$post_counts, $post_draft_count, $comment_counts,$unapproved_comment_count, $users_counts,$subscriber_count, $category_counts];
+                        for ($i = 0; $i < 7; $i++) {
+                            echo "['{$element_text[$i]}'" . "," . "{$element_count[$i]}],";
+                        }
+                        ?>
+                        //['Posts', 1170]
+                    ]);
+
+                    var options = {
+                        chart: {
+                            title: '',
+                            subtitle: '',
+                        }
+                    };
+
+                    var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+                    chart.draw(data, google.charts.Bar.convertOptions(options));
+                }
+            </script>
+            <div id="columnchart_material" style="width: 'auto'; height: 500px;"></div>
         </div>
         <!-- /.container-fluid -->
 
