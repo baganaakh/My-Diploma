@@ -9,7 +9,7 @@
 
         <!-- Blog Entries Column -->
         <div class="col-md-8">
-            <?php 
+            <?php
             if (isset($_GET['p_id'])) {
                 $the_post_id = $_GET['p_id'];
 
@@ -24,35 +24,30 @@
                     $post_content = substr($row['post_content'], 0, 200);
                     ?>
 
-            <h1 class="page-header">
-                Page Heads
-                <small>Secondary Text</small>
-            </h1>
+                    <h1 class="page-header">
+                        Page Heads
+                        <small>Secondary Text</small>
+                    </h1>
 
-            <!-- First Blog Post -->
-            <h2>
-                <a href="post.php?p_id=<?php echo $post_id; ?>"><?php echo $post_title ?></a>
-            </h2>
-            <p class="lead">
-                by <a href="index.php"><?php echo $post_author ?></a>
-            </p>
-            <p><span class="glyphicon glyphicon-time"></span> <?php echo $post_date ?></p>
-            <hr>
-            <img class="img-responsive" src="images/<?php echo $post_image ?>" alt="">
-            <hr>
-            <p><?php echo $post_content ?></p>
-            <a class="btn btn-primary" href="#">Read More<span class="glyphicon glyphicon-chevron-right"></span></a>
+                    <!-- First Blog Post -->
+                    <h2>
+                        <a href="post.php?p_id=<?php echo $post_id; ?>"><?php echo $post_title ?></a>
+                    </h2>
+                    <p class="lead">
+                        by <a href="index.php"><?php echo $post_author ?></a>
+                    </p>
+                    <p><span class="glyphicon glyphicon-time"></span> <?php echo $post_date ?></p>
+                    <hr>
+                    <img class="img-responsive" src="images/<?php echo $post_image ?>" alt="">
+                    <hr>
+                    <p><?php echo $post_content ?></p>
 
-            <hr>
-            <?php 
-        }
-    } ?>
-
-
-
-
+                    <hr>
+                <?php
+            }
+        } ?>
             <!-- Blog Comments -->
-            <?php 
+            <?php
 
             if (isset($_POST['create_comment'])) {
                 $the_post_id = $_GET['p_id'];
@@ -68,8 +63,8 @@
                     die('querry failed' . mysqli_error($connection));
                 }
                 $query = "UPDATE posts set post_comment_count = post_comment_count + 1 ";
-                $query .="WHERE post_id = $the_post_id";
-                $update_comment_count=mysqli_query($connection,$query);
+                $query .= "WHERE post_id = $the_post_id";
+                $update_comment_count = mysqli_query($connection, $query);
             }
             ?>
             <!-- Comments Form -->
@@ -97,7 +92,7 @@
 
             <!-- Posted Comments -->
 
-            <?php 
+            <?php
             $query = "SELECT * FROM comments WHERE comment_post_id = {$the_post_id} ";
             $query .= "AND comment_status = 'approved' ";
             $query .= "ORDER BY comment_id DESC ";
@@ -111,30 +106,21 @@
                 $comment_author = $row['comment_author'];
 
                 ?>
-            <div class="media">
-                <a class="pull-left" href="#">
-                    <img class="media-object" src="http://placehold.it/64x64" alt="">
-                </a>
-                <div class="media-body">
-                    <h4 class="media-heading"><?php echo $comment_author; ?>
-                        <small><?php echo $comment_date; ?></small>
-                    </h4>
-                    <?php echo $comment_content; ?>
-                </div>
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object" src="http://placehold.it/64x64" alt="">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading"><?php echo $comment_author; ?>
+                            <small><?php echo $comment_date; ?></small>
+                        </h4>
+                        <?php echo $comment_content; ?>
+                    </div>
 
-            </div>
-            <?php 
+                </div>
+            <?php
         } ?>
             <!-- Comment -->
-
-
-
-
-
-
-
-
-
         </div>
 
         <!-- Blog Sidebar Widgets Column -->
@@ -144,4 +130,4 @@
     <!-- /.row -->
 
     <hr>
-    <?php require_once "includes/footer.php" ?> 
+    <?php require_once "includes/footer.php" ?>
