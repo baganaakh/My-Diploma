@@ -47,9 +47,9 @@ if (isset($_POST['Update_Post']) && isset($_GET['p_id'])) {
     $query .= "post_image = '{$post_image}' ";
     $query .= "WHERE post_id = '{$the_post_id}' ";
     $update_post = mysqli_query($connection, $query);
-    if (!$update_post) {
-        die("QUERY FILED DD" . mysqli_error($connection));
-    }
+  comfirm($update_post);
+  echo "<p class='bg-success'>Post Updated. <a href='../post.php?p_id={$the_post_id}'>View Post</a> or 
+  <a href='posts.php'>Edit More Posts</a></p>";
 }
 ?>
 <form action="" method="post" enctype="multipart/form-data">
@@ -104,13 +104,13 @@ if($post_status == 'published'){
 
 <?php echo $post_content; ?>
   </textarea>
-   <!-- <script >
+   <script >
 ClassicEditor
         .create( document.querySelector( '#body' ) )
         .catch( error => {
             console.error( error );
         } );
-</script> -->
+</script>
     </div>
     <div class="form-group">
         <input type="submit" class="btn btn-primary" name="Update_Post" value="Update Post">

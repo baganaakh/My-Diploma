@@ -15,7 +15,7 @@
 
             if (isset($_POST['submit'])) {
                 $search = $_POST['search'];
-                $query = "SELECT * FROM posts WHERE post_tags LIKE '%$search%' ";
+                $query = "SELECT * FROM posts WHERE post_tags LIKE '%search%' ";
                 $search_query = mysqli_query($connection, $query);
                 if (!$search_query) {
                     die("QUERY FAILED".mysqli_error($connection));
@@ -33,7 +33,6 @@
                         $post_image = $row['post_image'];
                         $post_content = $row['post_content'];
                         ?>
-                    
                     <h1 class="page-header">
                     Page Head   s dasdasddd
                     <small>Secondary Text</small>
@@ -60,16 +59,6 @@
             }
         }
         ?>
-
-
-              
-
-
-                
-                
-
-        
-
             </div>
 
             <!-- Blog Sidebar Widgets Column -->

@@ -27,7 +27,8 @@ if (isset($_POST['edit_user'])) {
     // $user_image_temp = $_FILES['image']['tmp_name'];
   //  UPDATE `users` SET `user_email` = 'Check@fsdf.com' WHERE `users`.`user_id` = 13;
 
-$query="UPDATE `users` SET `username` = '{$username}', `user_role` = '{$user_role}', `password` = '{$user_password}', `user_firstname` = '{$user_firstname}', `user_lastname` = '{$user_lastname}', `user_email` = '{$user_email}' WHERE `users`.`user_id` = '{$the_user_id}'";
+$query="UPDATE `users` SET `username` = '{$username}', `user_role` = '{$user_role}', `password` = '{$user_password}', `user_firstname` = '{$user_firstname}', ";
+$query .="`user_lastname` = '{$user_lastname}', `user_email` = '{$user_email}' WHERE `users`.`user_id` = '{$the_user_id}'";
 
     // move_uploaded_file($post_image_temp, "../images/$post_image");
     // $query=" UPDATE `users` SET ";
