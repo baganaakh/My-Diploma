@@ -7,7 +7,7 @@ if (isset($_POST['create_user'])) {
     $user_password = $_POST['user_password'];
     $user_email = $_POST['user_email'];
     $query = "INSERT INTO `users` (`user_id`, `username`, `password`, `user_firstname`, `user_lastname`, `user_email`, `user_image`, `user_role`, `randSalt`) ";
-    $query .= "VALUES (NULL,'{$username}', '{$user_password}','{$user_firstname}','{$user_lastname}','{$user_email}', '' ,'{$user_role}', '')";
+    $query .= "VALUES (NULL,'{$username}', '{$user_password}','{$user_firstname}','{$user_lastname}','{$user_email}', '' ,'{$user_role}', '$2y$10\$IuseSomeCrazyStrings22')";
     $create_user_query = mysqli_query($connection, $query);
     comfirm($create_user_query);
     echo "User Created: "." ". "<a href='user.php'>View Users</a>";

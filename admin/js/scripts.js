@@ -7,11 +7,11 @@ ClassicEditor
     });
 $('#selectAllBoxes').click(function(){
     if(this.checked){
-        $('.checkBoxes').each(function(){
+        $('.checkBox').each(function(){
             this.checked=true;
         });
     }else {
-         $('.checkBoxes').each(function(){
+         $('.checkBox').each(function(){
             this.checked=false;
         });
     }
