@@ -54,7 +54,7 @@ $query .="`user_lastname` = '{$user_lastname}', `user_email` = '{$user_email}' W
     </div>
     <div class="form-group">
         <select name="user_role">
-            <option value="subscriber"><?php echo $user_role; ?></option>
+            <option value="<?php echo $user_role; ?>"><?php echo $user_role; ?></option>
             <?php
             if($user_role == 'subscriber'){
                 echo "<option value='admin'>Admin</option>";
