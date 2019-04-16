@@ -4,7 +4,7 @@ ClassicEditor
         .catch( error => {
             console.error( error );
         } );
-    });
+    
 $('#selectAllBoxes').click(function(){
     if(this.checked){
         $('.checkBox').each(function(){
@@ -16,3 +16,4 @@ $('#selectAllBoxes').click(function(){
         });
     }
     });
+});

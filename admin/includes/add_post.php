@@ -7,11 +7,12 @@ if (isset($_POST['create_post'])) {
 
     $post_image = $_FILES['image']['name'];
     $post_image_temp = $_FILES['image']['tmp_name'];
+ move_uploaded_file($post_image_temp, "../images/$post_image");
 
     $post_tags = $_POST['post_tags'];
     $post_content = $_POST['post_content'];
     $post_date = date('d-m-y');
-    move_uploaded_file($post_image_temp, "../images/$post_image");
+   
     $query = "INSERT INTO `posts`(`post_title`, `post_author`, `post_category_id`, `post_status`, `post_image`, `post_content`, `post_tags`, `post_date`)";
     $query .= " VALUES ('$post_title','$post_author','$post_category_id','$post_status','$post_image','$post_content','$post_tags',NOW())";
   $post_post=mysqli_query($connection, $query);
