@@ -42,8 +42,6 @@ if (isset($_POST['checkBoxArray'])) {
         }
     }
 }
-
-?><?php
 if (isset($_GET['delete'])) {
     $query = "DELETE FROM posts WHERE post_id=".$_GET['delete'];
     $delete_query = mysqli_query($connection, $query);
@@ -68,32 +66,8 @@ if (isset($_GET['delete'])) {
             <a href="posts.php?source=add_post" class="btn btn-primary">Add New</a>
         </div>
         <thead>
-             <script type="text/javascript" lang="JavaScript">
-             $(document).ready(function(){
-                 $("#selectAllBoxes").change(function(){
-                     var checked=$(this).is(':checked');
-                     if(checked){
-                         $(".checkBoxes").each(function(){
-                             $(this).prop("checked",true);
-                         });
-                     }else {
-                        $(".checkBoxes").each(function(){
-                             $(this).prop("checked",false);
-                         });
-                     }
-                 });
-                 $(".checkBoxes").click(function(){
-                     if($(".checkBoxes").length == $(".checkBoxes:checked").length){
-                         $("#selectAllBoxes").prop("checked",true);
-                     }else {
-                         $("#selectAllBoxes").removeAttr("checked");
-                     }
-                 });
-             });
-       
-    </script>
             <tr>
-                <th><input type="checkbox" id='selectAllBoxes' onchange="toggle(this)"></th>
+                <th><input type="checkbox" onclick="javascript:checkAll(this)" id='selectAllBoxes'></th>
                 <th>Id</th>
                 <th>Author</th>
                 <th>Title</th>

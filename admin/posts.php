@@ -47,4 +47,4 @@
 
 </div>
 
-<?php require "includes/adminfooter.php" ?>s 
+<?php require "includes/adminfooter.php" ?>
