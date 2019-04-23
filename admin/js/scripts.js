@@ -13,3 +13,11 @@ $("body").prepend(div_box);
 $('#load-screen').delay(700).fadeOut(600,function(){
   $(this).remove();
 });
+function loadUsersOnline(){
+  $.get("admin_func.php?onlineusers=result",function(data){
+    $(".usersonline").text(data);
+  });
+}
+setInterval(function(){
+  loadUsersOnline();
+},500);
